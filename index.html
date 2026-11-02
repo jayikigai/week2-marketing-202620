@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Week 2: Copy &amp; Creative Portfolio – Ikigai School of AI</title>
+<style>
+:root{--bg:#F6F7FB;--surface:#FFFFFF;--ink:#14183A;--muted:#54597A;--line:#D5D8E8;--accent:#1F2FA8;--hi:#F5B700;--hi-ink:#14183A;--ok:#14794A;--warn:#B3341F;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0C1030;--surface:#151A45;--ink:#EEF0FF;--muted:#A7ACD6;--line:#2C3370;--accent:#8EA2FF;--ok:#4BD08F;--warn:#FF8A73}}
+:root[data-theme="dark"]{--bg:#0C1030;--surface:#151A45;--ink:#EEF0FF;--muted:#A7ACD6;--line:#2C3370;--accent:#8EA2FF;--ok:#4BD08F;--warn:#FF8A73}
+*{box-sizing:border-box}html{scroll-padding-top:70px;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+h1,h2,h3{font-family:Georgia,"Iowan Old Style","Times New Roman",serif;line-height:1.15;margin:0 0 .5em}
+h1{font-size:clamp(2.2rem,6vw,4rem)}h2{font-size:clamp(1.6rem,3.5vw,2.4rem)}h3{font-size:1.2rem}
+p{margin:0 0 1em;max-width:68ch}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+section{padding:60px 0}
+nav{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;gap:6px;overflow-x:auto;align-items:center;padding-top:10px;padding-bottom:10px}
+nav b{font-family:Georgia,serif;margin-right:auto;white-space:nowrap}
+nav a{white-space:nowrap;text-decoration:none;color:var(--muted);padding:6px 10px;border-radius:6px;font-size:.9rem}
+nav a:hover,nav a:focus-visible{color:var(--ink);background:var(--surface)}
+:focus-visible{outline:3px solid var(--hi);outline-offset:2px}
+.hero{display:grid;grid-template-columns:1.05fr 1fr;gap:28px;align-items:center;padding-top:40px}
+.mark{background:linear-gradient(transparent 58%,var(--hi) 58%);padding:0 .1em}
+#stage3d{position:relative;aspect-ratio:1/1;max-height:480px;width:100%}
+#stage3d canvas{width:100%!important;height:100%!important;display:block;border-radius:16px}
+.btn{display:inline-block;border:2px solid var(--ink);background:var(--hi);color:var(--hi-ink);font:inherit;font-weight:700;padding:10px 18px;border-radius:10px;cursor:pointer;text-decoration:none;margin:0 8px 8px 0}
+.btn.ghost{background:transparent;color:var(--ink)}
+.stages{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.stages button{font:inherit;background:var(--surface);color:var(--ink);border:1.5px solid var(--line);border-radius:999px;padding:6px 14px;cursor:pointer}
+.stages button[aria-pressed="true"]{background:var(--accent);color:var(--bg);border-color:var(--accent)}
+#stageCap{min-height:3.2em;border-left:4px solid var(--hi);padding-left:12px;color:var(--muted)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.tabs button{font:inherit;cursor:pointer;background:var(--surface);color:var(--ink);border:1.5px solid var(--line);border-radius:10px;padding:8px 14px}
+.tabs button[aria-selected="true"]{border-color:var(--ink);background:var(--hi);color:var(--hi-ink);font-weight:700}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.cols h3{font-size:1rem;color:var(--muted);font-family:inherit}
+details{background:var(--surface);border:1px solid var(--line);border-radius:12px;margin-bottom:10px;padding:2px 16px}
+summary{cursor:pointer;font-weight:700;padding:12px 0;list-style:none;display:flex;justify-content:space-between;gap:10px}
+summary::after{content:"+";color:var(--accent);font-size:1.3rem;line-height:1}
+details[open] summary::after{content:"\2212"}
+.ex{border-left:4px solid var(--hi);padding:2px 12px;color:var(--muted);margin:0 0 14px}
+label{display:block;font-weight:600;margin:12px 0 4px;font-size:.95rem}
+input,textarea,select{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:8px;padding:9px 11px}
+textarea{min-height:60px;resize:vertical}
+input[type=color]{padding:2px;height:44px;cursor:pointer}
+.out{background:var(--bg);border:2px dashed var(--accent);border-radius:12px;padding:14px;margin-top:14px;min-height:60px}
+.flag{color:var(--warn);font-size:.92rem;margin:6px 0 0}.good{color:var(--ok)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px}
+table{border-collapse:collapse;width:100%;font-size:.95rem}th,td{border:1px solid var(--line);padding:6px 8px;text-align:left}th{background:var(--surface);font-size:.85rem}
+td input[type=number]{width:60px;padding:6px}
+tr.best td{background:var(--hi);color:var(--hi-ink)}tr.best input{color:var(--ink)}
+.scroll{overflow-x:auto}
+.rule{background:var(--warn);color:#fff;border-radius:12px;padding:14px 18px;font-weight:700;margin-bottom:20px}
+.bar{height:12px;border-radius:99px;background:var(--line);overflow:hidden;margin:8px 0 14px}.bar i{display:block;height:100%;width:0;background:var(--ok);transition:width .3s}
+.chk{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--line);margin:0;font-weight:400}
+.chk input{width:22px;height:22px;margin-top:3px;flex:none}
+.cnt{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid var(--line)}
+.cnt button{font:inherit;width:34px;height:34px;border-radius:8px;border:1.5px solid var(--ink);background:var(--surface);color:var(--ink);cursor:pointer}
+.cnt span{min-width:64px;text-align:center;font-weight:700}
+.sw{border-radius:12px;padding:22px;text-align:center;font-weight:700;font-size:1.3rem;border:1px solid var(--line)}
+.pill{display:inline-block;border-radius:99px;padding:3px 12px;font-weight:700;font-size:.9rem;margin:6px 8px 0 0;color:#fff}
+.pass{background:var(--ok)}.fail{background:var(--warn)}
+.tl{display:grid;grid-template-columns:80px 1fr;gap:10px;align-items:start}
+.tl b{color:var(--accent);padding-top:10px}
+footer{padding:40px 0;color:var(--muted);border-top:1px solid var(--line);font-size:.9rem}
+@media (max-width:820px){.hero,.two,.cols{grid-template-columns:1fr}section{padding:44px 0}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<nav><div class="wrap"><b>Ikigai School of AI</b><a href="#plan">Week plan</a><a href="#concepts">Concepts</a><a href="#lab">Live lab</a><a href="#portfolio">Portfolio</a></div></nav>
+<main>
+<section class="hero wrap">
+ <div>
+  <p style="color:var(--muted);margin-bottom:.4em">Digital Marketing, Basic level. Week 2</p>
+  <h1>Turn thinking into <span class="mark">words, visuals</span> and a portfolio.</h1>
+  <p>Week 1 taught you to think like a marketer. This week you write headlines, design creatives, storyboard a short video and critique real marketing, all by hand. AI for Marketing begins in Week 3.</p>
+  <a class="btn" href="#plan">See the week plan</a><a class="btn ghost" href="#portfolio">Build your portfolio</a>
+ </div>
+ <div>
+  <div id="stage3d" aria-label="3D staircase of the five-step creative formula"></div>
+  <div class="stages" id="stageBtns" role="group" aria-label="Pick a step"></div>
+  <p id="stageCap" aria-live="polite">Tap a step to raise it.</p>
+ </div>
+</section>
+
+<section id="plan"><div class="wrap">
+ <h2>The week in six classes</h2>
+ <p>A suggested split. Move topics between days to fit your batch timings.</p>
+ <div class="tabs" role="tablist" id="dayTabs"></div>
+ <div class="card" id="dayBody" role="tabpanel"></div>
+</div></section>
+
+<section id="concepts"><div class="wrap">
+ <h2>Concepts, one at a time</h2>
+ <p>Try to answer the question in each title before you open the card.</p>
+ <div id="conceptList"></div>
+</div></section>
+
+<section id="lab"><div class="wrap">
+ <h2>Live lab</h2>
+ <p>Use your Week 1 business in every tool below. Four tools: score headlines, check colour contrast, write a CTA, plan a 30-second storyboard.</p>
+ <div class="card" style="margin-bottom:18px">
+  <h3>Headline scorer</h3>
+  <p style="color:var(--muted)">Type up to six headlines. Score each from 1 to 5 on the five criteria. The highest total is highlighted. Then ask: would my target customer stop scrolling to read this?</p>
+  <div class="scroll"><table id="hl"><thead><tr><th>Headline</th><th>Clarity</th><th>Relevance</th><th>Attention</th><th>Benefit</th><th>Audience fit</th><th>Total</th></tr></thead><tbody></tbody></table></div>
+  <p id="hlBest" style="margin:12px 0 0"></p>
+ </div>
+ <div class="two">
+  <div class="card">
+   <h3>Colour contrast checker</h3>
+   <label for="c1">Text colour</label><input type="color" id="c1" value="#9AA0A6">
+   <label for="c2">Background colour</label><input type="color" id="c2" value="#FFFFFF">
+   <div class="sw" id="sw" style="margin-top:14px">Learn Digital Marketing</div>
+   <div id="cr"></div>
+  </div>
+  <div class="card">
+   <h3>CTA builder: action + value</h3>
+   <label for="a1">Action</label><input id="a1" placeholder="Download">
+   <label for="a2">Value</label><input id="a2" placeholder="your free marketing checklist">
+   <div class="out" id="ctaOut">Fill in both boxes.</div><div id="ctaFlags"></div>
+  </div>
+ </div>
+ <div class="card">
+  <h3>30-second storyboard planner</h3>
+  <p style="color:var(--muted)">Write one line for each beat. Say what the viewer sees and hears.</p>
+  <div id="sb"></div>
+  <div class="out" id="sbOut">Your storyboard appears here.</div>
+ </div>
+</div></section>
+
+<section id="portfolio"><div class="wrap">
+ <h2>Your Week 2 portfolio</h2>
+ <div class="rule">Still no AI this week. Write and design the first drafts yourself. AI for Marketing starts in Week 3.</div>
+ <p>Tick items as you finish them. Progress saves on this device only.</p>
+ <div class="two">
+  <div class="card"><h3>Tasks</h3><div id="tasks"></div><div class="bar"><i id="tBar"></i></div><p id="tTxt" style="margin:0"></p></div>
+  <div class="card"><h3>Counters</h3><p style="color:var(--muted)">Tap + each time you finish one.</p><div id="counters"></div><div class="bar"><i id="cBar"></i></div><p id="cTxt" style="margin:0"></p></div>
+ </div>
+ <h3 style="margin-top:30px">Deliverables to submit</h3>
+ <div class="card"><div id="deliv"></div><div class="bar"><i id="dBar"></i></div><p id="dTxt" style="margin:0"></p></div>
+ <h3 style="margin-top:30px">Before you publish any creative</h3>
+ <div class="cols" id="pre"></div>
+</div></section>
+</main>
+<footer><div class="wrap">Ikigai School of AI, Kaizen Center, Lucknow. Next up: Week 3, AI for Marketing.</div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+const $=s=>document.querySelector(s);
+let store={};try{store=JSON.parse(localStorage.getItem("w2")||"{}")}catch(e){}
+const save=()=>{try{localStorage.setItem("w2",JSON.stringify(store))}catch(e){}};
+
+/* ---- formula steps + 3D ---- */
+const ST=[["Hook","Grab attention with curiosity, a problem, surprise or urgency."],["Message","Say one clear thing the customer needs to hear."],["Benefit","Show what the customer gets, not just what the product has."],["Emotion","Make them feel the before and the after."],["Action","Tell them exactly what to do next."]];
+let active=0,discs=[];
+const sb=$("#stageBtns");
+ST.forEach((s,i)=>{const b=document.createElement("button");b.textContent=s[0];b.setAttribute("aria-pressed",i===0);b.onclick=()=>pick(i);sb.appendChild(b)});
+function pick(i){active=i;[...sb.children].forEach((b,j)=>b.setAttribute("aria-pressed",j===i));$("#stageCap").textContent=ST[i][0]+": "+ST[i][1]}pick(0);
+(function(){try{
+ const box=$("#stage3d"),R=new THREE.WebGLRenderer({antialias:true,alpha:true});R.setPixelRatio(Math.min(devicePixelRatio,2));box.appendChild(R.domElement);
+ const S=new THREE.Scene(),C=new THREE.PerspectiveCamera(40,1,.1,100);C.position.set(0,2.5,9);C.lookAt(0,.8,0);
+ S.add(new THREE.AmbientLight(0xffffff,.7));const dl=new THREE.DirectionalLight(0xffffff,.9);dl.position.set(4,6,5);S.add(dl);
+ const G=new THREE.Group();S.add(G);const cols=[0x1F2FA8,0x3347D1,0x5468F0,0x7B8BFF,0xF5B700];
+ ST.forEach((s,i)=>{const h=.8+i*.6,g=new THREE.BoxGeometry(1.3,h,1.3),d=new THREE.Mesh(g,new THREE.MeshStandardMaterial({color:cols[i],roughness:.45,transparent:true,opacity:.9}));
+  d.position.set(-2.6+i*1.3,h/2-.2,0);d.add(new THREE.LineSegments(new THREE.EdgesGeometry(g),new THREE.LineBasicMaterial({color:0xffffff,transparent:true,opacity:.5})));d.userData.y=d.position.y;G.add(d);discs.push(d)});
+ const size=()=>{const w=box.clientWidth,h=box.clientHeight;R.setSize(w,h,false);C.aspect=w/h;C.updateProjectionMatrix()};size();addEventListener("resize",size);
+ let mx=0,my=0;box.addEventListener("pointermove",e=>{const r=box.getBoundingClientRect();mx=(e.clientX-r.left)/r.width-.5;my=(e.clientY-r.top)/r.height-.5});
+ const still=matchMedia("(prefers-reduced-motion:reduce)").matches;
+ (function loop(t){requestAnimationFrame(loop);G.rotation.y=still?.4:Math.sin(t*.0004)*.6+mx*1;G.rotation.x=my*.3;
+  discs.forEach((d,i)=>{d.position.y+=(d.userData.y+(i===active?.7:0)-d.position.y)*.12;d.material.opacity=i===active?1:.78;d.scale.setScalar(i===active?1.06:1)});R.render(S,C)})(0);
+}catch(e){const b=$("#stage3d");if(b)b.style.display="none"}})();
+
+/* ---- week plan ---- */
+const DAYS=[
+["Day 1","Headlines, hooks, features and benefits",["What makes a headline stop the scroll","Hook types: curiosity, problem, benefit, urgency","Features versus benefits"],"Rewrite “Our Digital Marketing Course” in five different ways, live.","Write your first 8 headlines."],
+["Day 2","Transformation, brand voice and tone",["Current state → solution → desired state","Voice is personality, tone is situation","Same message in a luxury voice and a youth voice"],"Say one message in two voices, then in a calm complaint-handling tone.","Finish 15 headlines. Pick the best one and write the reason."],
+["Day 3","CTAs, editing and rewriting",["Action + value","Write → review → edit → simplify → strengthen","The editing checklist"],"Edit a rambling caption together with the checklist.","Write 5 CTAs and edit 3 copy examples."],
+["Day 4","Visual hierarchy, composition, colour, type, accessibility",["What the eye sees first, second, third","Colour psychology is a guide, not a rule","Contrast, readable sizes, no meaning by colour alone"],"Use the contrast checker below on a real poster. Sketch a hierarchy on the board.","Sketch layouts for your 3 creatives on paper."],
+["Day 5","Build the creatives and the storyboard",["Educational, promotional and problem → solution creatives","Headline + visual + supporting copy + CTA + branding","15–30 second storyboard: hook, problem, solution, benefit, CTA"],"Build one creative live in a design tool of your choice, such as Canva or a free alternative.","Finish 3 creatives and the storyboard."],
+["Day 6","Critique and portfolio",["Critique copy and design separately","Ask: what would YOU improve?","Assemble and check the portfolio"],"Critique one creative together as a class, using the checklist.","Complete 3 critiques, assemble the portfolio and submit."]];
+const dt=$("#dayTabs"),db=$("#dayBody");
+DAYS.forEach((d,i)=>{const b=document.createElement("button");b.textContent=d[0];b.setAttribute("role","tab");b.onclick=()=>showDay(i);dt.appendChild(b)});
+function showDay(i){[...dt.children].forEach((b,j)=>b.setAttribute("aria-selected",j===i));const d=DAYS[i];
+ db.innerHTML="<h3>"+d[0]+": "+d[1]+"</h3><div class='cols'><div><h3>Learn</h3><ul>"+d[2].map(x=>"<li>"+x+"</li>").join("")+"</ul></div><div><h3>Live demo</h3><p>"+d[3]+"</p></div><div><h3>Your task today</h3><p>"+d[4]+"</p></div></div>"}showDay(0);
+
+/* ---- concepts ---- */
+const CON=[
+["Headlines and hooks","A headline is the first message the audience sees. Its job is to make people stop.","Weak: “Our Digital Marketing Course.” Stronger: “Learn Digital Marketing by Building Real Campaigns.”"],
+["Features versus benefits","Feature: what the product has. Benefit: what the customer gets.","Feature: lightweight material. Benefit: run comfortably for longer. Customers buy the value features create."],
+["Transformation messaging","Show the customer’s journey, not only the product.","Before: “I don’t know how to run campaigns.” After: “I can plan and launch them confidently.”"],
+["Brand voice","How a brand sounds, consistently. One recognisable personality.","Luxury: “Designed for those who appreciate refined craftsmanship.” Youth: “Built to keep up with your everyday hustle.”"],
+["Tone","Voice is who the brand is. Tone is how it speaks in a situation.","A friendly brand answering a serious complaint becomes calm, helpful and respectful."],
+["Call to action","Tell the audience what to do next. Use action + value.","Weak: “Click here.” Better: “Download Your Free Marketing Checklist.”"],
+["Editing and rewriting","Write, review, edit, simplify, strengthen.","Check clarity, headline, benefit, unnecessary words, natural tone and CTA. If you can say it more simply, do."],
+["Visual hierarchy","What the viewer sees first, second and third.","Headline, then main visual, then supporting information, then CTA and brand. Do not make every element fight for attention."],
+["Composition","How elements are arranged: balance, alignment, spacing, contrast, white space, focal point.","A good design answers three questions at once: what is this, why should I care, what should I do?"],
+["Colour psychology","Colours influence perception, but culture, context and brand identity matter too.","Blue often signals trust, green growth, red urgency. Treat these as a guide, not a fixed rule."],
+["Typography","How text looks and feels. Use it to build hierarchy.","Headline large and strong, subheadline medium, body simple and readable, CTA clear and noticeable."],
+["Accessibility","Make creatives understandable to as many people as possible.","Readable sizes, strong contrast, simple language, captions on video, no important information in colour alone. Test it in the contrast checker."]];
+$("#conceptList").innerHTML=CON.map(c=>"<details><summary>"+c[0]+"</summary><p>"+c[1]+"</p><p class='ex'>"+c[2]+"</p></details>").join("");
+
+/* ---- headline scorer ---- */
+const tb=$("#hl tbody");
+for(let r=0;r<6;r++){const tr=document.createElement("tr");
+ tr.innerHTML="<td><input aria-label='Headline "+(r+1)+"' placeholder='Headline "+(r+1)+"'></td>"+[0,1,2,3,4].map(()=>"<td><input type='number' min='0' max='5' value='0' aria-label='score'></td>").join("")+"<td class='tot'>0</td>";
+ tr.addEventListener("input",hl);tb.appendChild(tr)}
+function hl(){let best=0,bi=-1;const rows=[...tb.children];
+ rows.forEach((tr,i)=>{const s=[...tr.querySelectorAll("input[type=number]")].reduce((a,x)=>a+Math.max(0,Math.min(5,+x.value||0)),0);tr.querySelector(".tot").textContent=s;tr.classList.remove("best");if(s>best){best=s;bi=i}});
+ if(bi>=0&&rows[bi].querySelector("input").value.trim()){rows[bi].classList.add("best");$("#hlBest").textContent="Strongest so far ("+best+" of 25): “"+rows[bi].querySelector("input").value.trim()+"”. Does it pass the scroll-stop test?"}else $("#hlBest").textContent=""}
+
+/* ---- contrast ---- */
+const lum=h=>{const v=[1,3,5].map(i=>parseInt(h.substr(i,2),16)/255).map(c=>c<=.03928?c/12.92:Math.pow((c+.055)/1.055,2.4));return .2126*v[0]+.7152*v[1]+.0722*v[2]};
+function contrast(){const a=$("#c1").value,b=$("#c2").value,s=$("#sw");s.style.color=a;s.style.background=b;
+ const l1=lum(a),l2=lum(b),r=(Math.max(l1,l2)+.05)/(Math.min(l1,l2)+.05);
+ const p=(ok,t)=>"<span class='pill "+(ok?"pass":"fail")+"'>"+t+": "+(ok?"Pass":"Fail")+"</span>";
+ $("#cr").innerHTML="<p style='margin:12px 0 0'><b>Contrast ratio "+r.toFixed(2)+" : 1</b></p>"+p(r>=4.5,"Normal text (4.5)")+p(r>=3,"Large text (3)")+"<p style='color:var(--muted);font-size:.9rem;margin-top:10px'>Based on WCAG contrast guidelines. Light grey on white fails. Try darker text.</p>"}
+$("#c1").oninput=$("#c2").oninput=contrast;contrast();
+
+/* ---- CTA ---- */
+function cta(){const a=$("#a1").value.trim(),v=$("#a2").value.trim();
+ if(!a||!v){$("#ctaOut").textContent="Fill in both boxes.";$("#ctaFlags").innerHTML="";return}
+ $("#ctaOut").textContent=a+" "+v;const f=[];
+ if(/^(click|click here|submit|download|learn more|read more|go)$/i.test(a))f.push("The action word alone is weak. The value part is doing the work, so make it specific.");
+ if(v.split(/\s+/).length<3)f.push("Add more value: what exactly does the customer get?");
+ $("#ctaFlags").innerHTML=f.length?f.map(x=>"<p class='flag'>• "+x+"</p>").join(""):"<p class='flag good'>Clear action and clear value. Would your customer know what happens next?</p>"}
+$("#a1").oninput=$("#a2").oninput=cta;
+
+/* ---- storyboard ---- */
+const BEATS=[["0–3 sec","Hook","Grab attention"],["3–8 sec","Problem","Show the customer’s problem"],["8–20 sec","Solution","Introduce the product or service"],["20–25 sec","Benefit","Show the transformation"],["25–30 sec","CTA","Tell them what to do next"]];
+$("#sb").innerHTML=BEATS.map((b,i)=>"<div class='tl'><b>"+b[0]+"</b><div><label for='b"+i+"' style='margin-top:4px'>"+b[1]+"</label><textarea id='b"+i+"' placeholder='"+b[2]+"'></textarea></div></div>").join("");
+$("#sb").addEventListener("input",()=>{const t=BEATS.map((b,i)=>{const v=$("#b"+i).value.trim();return v?b[0]+" "+b[1]+": "+v:""}).filter(Boolean).join("\n");$("#sbOut").style.whiteSpace="pre-line";$("#sbOut").textContent=t||"Your storyboard appears here."});
+
+/* ---- portfolio ---- */
+function checklist(host,items,key,bar,txt,label){const st=store[key]||(store[key]=[]);
+ $(host).innerHTML=items.map((t,i)=>"<label class='chk'><input type='checkbox' data-i='"+i+"'"+(st[i]?" checked":"")+"><span>"+t+"</span></label>").join("");
+ const u=()=>{const n=st.filter(Boolean).length;$(bar).style.width=(n/items.length*100)+"%";$(txt).textContent=n+" of "+items.length+" "+label};
+ $(host).addEventListener("change",e=>{st[+e.target.dataset.i]=e.target.checked;save();u()});u()}
+checklist("#tasks",["Task 1: write 15 headlines","Task 2: score them and pick the best","Task 3: create 3 social media creatives","Task 4: storyboard a 15–30 second video","Task 5: critique 3 existing creatives"],"tasks","#tBar","#tTxt","tasks done");
+checklist("#deliv",["15 headlines","Best headline with the reason","3 social media creatives","15–30 second video storyboard","3 creative critiques","Edited and improved copy examples"],"deliv","#dBar","#dTxt","deliverables ready");
+const CN=[["Headlines",15],["Creatives (educational, promotional, problem → solution)",3],["Critiques",3],["Edited copy examples",3]];
+const cv=store.cnt||(store.cnt=CN.map(()=>0));
+function cnt(){$("#counters").innerHTML=CN.map((c,i)=>"<div class='cnt'><span style='text-align:left;flex:1'>"+c[0]+"</span><button aria-label='Remove one' data-i='"+i+"' data-d='-1'>−</button><span>"+cv[i]+" / "+c[1]+"</span><button aria-label='Add one' data-i='"+i+"' data-d='1'>+</button></div>").join("");
+ const t=CN.reduce((a,c,i)=>a+Math.min(cv[i],c[1]),0),m=CN.reduce((a,c)=>a+c[1],0);$("#cBar").style.width=(t/m*100)+"%";$("#cTxt").textContent=t+" of "+m+" pieces done"}
+$("#counters").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;const i=+b.dataset.i;cv[i]=Math.max(0,cv[i]+ +b.dataset.d);save();cnt()});cnt();
+$("#pre").innerHTML=[["Copy",["Is the hook strong?","Is the benefit clear?","Is the message relevant?","Is the CTA clear?"]],["Design",["What do I see first?","Is the layout easy to follow?","Do the colours help the message?","Is the type readable and accessible?"]],["Customer",["Who is this for?","Why should they care?","What should they do next?"]]].map(g=>"<div class='card'><h3>"+g[0]+"</h3><ul style='margin:0;padding-left:20px'>"+g[1].map(x=>"<li>"+x+"</li>").join("")+"</ul></div>").join("");
+</script>
+</body>
+</html>
